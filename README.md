@@ -14,7 +14,7 @@ Parcel will use any installed package that begins with `parcel-plugin-` as plugi
 
 By default, any env var starting with `ELM_` and the `NODE_ENV` will be used.
 
-You can customize this by creating a file called `.parcel-plugin-elm-env-varsrc` at the root of your package -- or creating an entry `parcel-plugin-elm-env-vars` in your `package.json`-- and set it following this structure, which is the default:
+You can customize this by creating a file called `.parcel-plugin-elm-env-varsrc` at the root of your package -- or creating an entry `parcel-plugin-elm-env-vars` in your [`package.json`](https://github.com/pablohirafuji/parcel-plugin-elm-env-vars/blob/master/package.json#L32-L38) -- and set it following this structure, which is the default:
 
 ```json
 {
