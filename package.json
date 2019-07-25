@@ -1,0 +1,39 @@
+{
+  "name": "parcel-plugin-elm-env-vars",
+  "version": "1.0.0",
+  "description": "A parcel plugin for generating Elm file for your env vars automatically.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "parcel",
+    "parcel-bundler",
+    "elm",
+    "elm-env-vars"
+  ],
+  "author": "Pablo Hirafuji",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pablohirafuji/parcel-plugin-elm-env-vars.git"
+  },
+  "dependencies": {
+    "camelcase": "^5.3.1",
+    "cosmiconfig": "^5.2.1",
+    "dotenv": "^8.0.0",
+    "fs-extra": "^8.1.0",
+    "parcel-bundler": "^1.9.7"
+  },
+  "devDependencies": {
+    "elm-hot": "^1.1.0",
+    "node-elm-compiler": "^5.0.3"
+  },
+  "parcel-plugin-elm-env-vars": {
+    "moduleName": "EnvVars",
+    "vars": [
+      "^NODE_ENV$",
+      "^ELM_"
+    ]
+  }
+}
