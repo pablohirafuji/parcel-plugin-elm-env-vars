@@ -1,6 +1,6 @@
-const Bundler = require('parcel-bundler');
-const elmCSSModules = require('../src/index');
 const path = require('path');
+const Bundler = require('parcel-bundler');
+const ElmEnvVarsPlugin = require('../index');
 
 process.env.NODE_ENV = 'production';
 
@@ -12,7 +12,7 @@ async function main() {
     logLevel: 4,
     outDir: path.join(__dirname, 'dist'),
   });
-  elmCSSModules(bundler);
+  ElmEnvVarsPlugin(bundler);
   await bundler.bundle();
 
 }

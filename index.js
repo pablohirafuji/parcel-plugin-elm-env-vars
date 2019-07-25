@@ -1,10 +1,21 @@
-const path = require('path');
+'use strict';
 const fs = require('fs');
+const path = require('path');
 const fse = require('fs-extra');
 const camelcase = require('camelcase');
 const cosmiconfig = require('cosmiconfig');
 
-module.exports = async function init(bundler) {
+const DEFAULT_CONFIG = {
+  moduleName: 'EnvVars',
+  vars: [
+    "^NODE_ENV$",
+    "^ELM_"
+  ]
+};
+
+module.exports = async bundler => {
+
+  // set .env files vars
   const NODE_ENV = process.env.NODE_ENV;
   const dotenvPath = path.join(process.cwd(), '.env');
 
@@ -26,23 +37,16 @@ module.exports = async function init(bundler) {
     }
   });
 
+  // load config
+  let config = DEFAULT_CONFIG;
   const explorer = cosmiconfig('parcel-plugin-elm-env-vars');
-
-  let config = {
-    moduleName: 'EnvVars',
-    vars: [
-      "^NODE_ENV$",
-      "^ELM_"
-    ]
-  };
-
   const customConfig = await explorer.search();
   if (customConfig && customConfig.config) {
     config = Object.assign(config, customConfig.config);
   }
-  console.log(config);
-  const varsRegex = new RegExp(config.vars.join('|'), 'i');
 
+  // filter allowed vars
+  const varsRegex = new RegExp(config.vars.join('|'), 'i');
   const foundVars =
     Object.keys(process.env)
     .filter(key => varsRegex.test(key))
@@ -52,8 +56,8 @@ module.exports = async function init(bundler) {
         return env;
       }, {}
     );
-  console.log(foundVars);
 
+  //  write
   const splittedModuleName =
     config.moduleName.split('.')
     .filter((s) => s)
@@ -78,5 +82,6 @@ function generateElmFileContent(moduleName, foundVars) {
 -- Do not edit it manually.
 
 ${envVars}`
+
   return content;
 }

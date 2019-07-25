@@ -1,10 +1,10 @@
-A parcel plugin for generating Elm file for your env vars automatically.
+A Parcel plugin for generating Elm file for your env vars automatically.
 
 
 ## Installation
 
 ```bash
-npm install parcel-plugin-elm-env-vars
+npm install parcel-plugin-elm-env-vars --dev
 ```
 
 Parcel will use any installed package that begins with `parcel-plugin-` as plugin automatically.

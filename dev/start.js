@@ -1,6 +1,6 @@
 const path = require('path');
 const Bundler = require('parcel-bundler');
-const ElmEnvVarsPlugin = require('../src/index');
+const ElmEnvVarsPlugin = require('../index');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
