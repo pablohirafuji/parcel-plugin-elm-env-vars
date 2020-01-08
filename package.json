@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-elm-env-vars",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Parcel plugin for generating Elm file for your env vars automatically.",
   "main": "index.js",
   "scripts": {
